@@ -1,5 +1,6 @@
 package com.example.courseworkmailer.controller;
 
+import com.example.courseworkmailer.service.MailForm;
 import com.example.courseworkmailer.service.MailService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -12,12 +13,12 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 @Controller
 @RequestMapping("/mail")
 @AllArgsConstructor
-@Deprecated
 public class MailController {
     private MailService mail;
+
     @PostMapping("")
     @ResponseStatus(HttpStatus.OK)
-    public void postMail(@RequestBody String userMail, String mailText){
-        mail.sendSimpleMessage(userMail,"Coursework Application",mailText);
+    public void postMail(@RequestBody MailForm mailForm) {
+        mail.sendSimpleMessage(mailForm.getUserMail(), "Coursework Application", mailForm.getMailText());
     }
 }
