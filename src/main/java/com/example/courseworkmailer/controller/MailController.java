@@ -19,6 +19,6 @@ public class MailController {
     @PostMapping("")
     @ResponseStatus(HttpStatus.OK)
     public void postMail(@RequestBody MailForm mailForm) {
-        mail.sendSimpleMessage(mailForm.getUserMail(), "Coursework Application", mailForm.getMailText());
+        mail.sendSimpleMessage(mailForm.getUserMail(), "noreply@coursework.com", "Coursework Application", mailForm.getMailText());
     }
 }
